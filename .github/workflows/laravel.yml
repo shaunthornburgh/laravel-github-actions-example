@@ -63,7 +63,7 @@ jobs:
         with:
           php-version: '8.1'
       - name: Install dependencies
-        run: composer install - no-dev
+        run: composer install --no-dev
       - name: Set up AWS CLI
         uses: aws-actions/configure-aws-credentials@v1
         with:
