@@ -71,6 +71,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: ${{ secrets.AWS_REGION }}
       - name: Print private key
-        run: echo "${{ secrets.AWS_PRIVATE_KEY }}" >> ~/.ssh/id_rsa
+        run: |
+          pwd
+          echo "${{ secrets.AWS_PRIVATE_KEY }}" >> ~/.ssh/id_rsa
       - name: Deploy to AWS EC2
         run: ssh -i ~/.ssh/id_rsa ubuntu@${{ secrets.AWS_INSTANCE_IP }} "cd /var/www/html && git pull && composer install - no-dev && php artisan migrate - force && php artisan optimize"
