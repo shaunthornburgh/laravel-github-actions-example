@@ -76,4 +76,4 @@ jobs:
           echo "${{ secrets.AWS_PRIVATE_KEY }}" >> /home/runner/work/laravel-github-actions-example/laravel-github-actions-example/id_rsa
           chmod 600 /home/runner/work/laravel-github-actions-example/laravel-github-actions-example/id_rsa
       - name: Deploy to AWS EC2
-        run: ssh -o "StrictHostKeyChecking no" -i /home/runner/work/laravel-github-actions-example/laravel-github-actions-example/id_rsa ubuntu@${{ secrets.AWS_INSTANCE_IP }} "cd /var/www/html && git pull && composer install - no-dev && php artisan migrate - force && php artisan optimize"
+        run: ssh -o "StrictHostKeyChecking no" -i /home/runner/work/laravel-github-actions-example/laravel-github-actions-example/id_rsa ubuntu@${{ secrets.AWS_INSTANCE_IP }} "cd /var/www/html/laravel-github-actions-example/ && git pull && composer install - no-dev && php artisan migrate - force && php artisan optimize"
